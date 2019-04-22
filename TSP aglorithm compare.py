@@ -8,7 +8,7 @@ import math as m
 
 import matplotlib
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from matplotlib.figure import Figure
 import matplotlib.patches as mpatches
 
@@ -57,7 +57,7 @@ def returnGreedy(points,num5,num2):
 
 def run(self,canvas,r2,r3,num5):
     graph.clear()
-    canvas.show()
+    canvas.draw()
 
     global stop1
     stop1 = False
@@ -209,7 +209,7 @@ def run(self,canvas,r2,r3,num5):
             graph.set_ylabel('Distance')
             graph.set_xlabel("Iteration")
             
-            canvas.show()
+            canvas.draw()
 
         if sum(tempdistance) > c:
             c = sum(tempdistance)
@@ -240,7 +240,7 @@ def run(self,canvas,r2,r3,num5):
         if stop1:
             print("Cleared")
             graph.clear()
-            canvas.show()
+            canvas.draw()
             self.myCanvas.delete("all")
             stop1 = False
             break
@@ -250,7 +250,7 @@ def run(self,canvas,r2,r3,num5):
 
     graph.set_title("TSP Distance Comparison DONE")
  
-    canvas.show()
+    canvas.draw()
 
     if showworstpath:
         for h in range(0, num2):
@@ -286,14 +286,14 @@ class MyFrame(Frame):
         
         canvas = FigureCanvasTkAgg(f,can)
         canvas.get_tk_widget().grid(row=0, column=0)
-        canvas.show()
+        canvas.draw()
         
         tool = Frame()
         
         canvas._tkcanvas.grid(row=0, column=0)
         can.grid(row = 1, column =0, stick = "NW")
         
-        toolbar = NavigationToolbar2TkAgg(canvas, tool)  
+        toolbar = NavigationToolbar2Tk(canvas, tool)  
         toolbar.update()
 
         scalevar = tkinter.IntVar()
